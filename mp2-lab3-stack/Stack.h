@@ -13,6 +13,7 @@ protected:
     T* pMem;
 public:
     Stack(int _size = 10) {
+        if (_size < 0) throw "err";
         pMem = new T[_size];
         size = _size;
         topIndex = -1;
@@ -28,6 +29,14 @@ public:
             pMem[i] = s.pMem[i];
         }
     }
+    Stack(const Stack&& s) {
+        size = s.size;
+        topIndex = s.topIndex;
+        pMem = s.pMem;
+        s.size = 0;
+        s.topIndex = 0;
+        s.pMem = nullptr;
+    }
 
 
     Stack<T>& operator=(const Stack<T>& s) {
@@ -39,6 +48,17 @@ public:
             for (int i = 0; i < topIndex; i++) {
                 pMem[i] = s.pMem[i];
             }
+        }
+        return *this;
+    }
+    Stack<T>& operator=(const Stack<T>&& s) {
+        if (this != &s) {
+            size = s.size;
+            topIndex = s.topIndex;
+            delete[] pMem;
+            pMem = s.pMem;
+            s.size = 0;
+            s.topIndex = 0;
         }
         return *this;
     }
@@ -66,6 +86,21 @@ public:
     }
     bool clean() {
         topIndex = -1;
+    }
+    
+    void push(T elem) {
+        if (isFull()) {
+            throw "err";
+        }
+        topIndex++;
+        pMem[topIndex] = elem;
+    }
+    T pop() {
+        if (isEmpty()) {
+            throw "err";
+        }
+        topIndex--;
+        return pMem[topIndex + 1];
     }
 };
 
