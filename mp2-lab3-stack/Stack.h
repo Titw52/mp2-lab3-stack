@@ -63,7 +63,7 @@ public:
         return *this;
     }
 
-    bool operator==(const Stack<T>& s) {
+    bool operator==(const Stack<T>& s) const {
         if (size != s.size || topIndex != s.topIndex) {
             return false;
         }
@@ -74,7 +74,7 @@ public:
         }
         return true;
     }
-    bool operator!=(const Stack<T>& s) {
+    bool operator!=(const Stack<T>& s) const {
         return !operator==(s);
     }
 
