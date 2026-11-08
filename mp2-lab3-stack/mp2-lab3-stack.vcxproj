@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Calculator.h" />
+    <ClInclude Include="Container.h" />
     <ClInclude Include="Stack.h" />
   </ItemGroup>
   <ItemGroup>

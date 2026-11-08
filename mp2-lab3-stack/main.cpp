@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Stack.h"
+#include "Calculator.h"
 
 using namespace std;
 
@@ -25,5 +26,13 @@ int main() {
     if (!stack.isEmpty()) res = false;
 
     cout << res << endl;
+
+
+    cout << "Calculator" << endl;
+    Calculator calc;
+    calc.set_infix("(5 + 2.2 * 4.21) + 21 / 3.3");
+    calc.infix_to_cont();
+    cout << calc.print_tokens();
+
     return 0;
 }
