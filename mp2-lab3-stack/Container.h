@@ -8,7 +8,7 @@ class Container {
     int capacity;
 public:
     // Конструктор по умолчанию — размер 100
-    Container(int _size = 100) {
+    Container(int _size = 1000) {
         size = 0;
         capacity = _size;
         pMem = new T[capacity];

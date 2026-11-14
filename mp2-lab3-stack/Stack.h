@@ -12,7 +12,7 @@ protected:
     int topIndex, size;
     T* pMem;
 public:
-    Stack(int _size = 10) {
+    Stack(int _size = 1000) {
         if (_size < 0) throw "err";
         pMem = new T[_size];
         size = _size;
@@ -84,8 +84,12 @@ public:
     bool isEmpty() {
         return topIndex == -1;
     }
-    bool clean() {
+    void clean() {
         topIndex = -1;
+        return;
+    }
+    int get_size() {
+        return topIndex;
     }
     
     void push(T elem) {
@@ -101,6 +105,12 @@ public:
         }
         topIndex--;
         return pMem[topIndex + 1];
+    }
+    T top() {
+        if (isEmpty()) {
+            throw "err";
+        }
+        return pMem[topIndex];
     }
 };
 

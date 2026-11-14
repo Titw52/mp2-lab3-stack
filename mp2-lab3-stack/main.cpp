@@ -6,33 +6,16 @@
 using namespace std;
 
 int main() {
-    string str = "((a+b)*4/(2-1)";
-    Stack<char> stack(100);
-    bool res = true;
-
-    for (int i = 0; i < str.size(); i++) {
-        if (str[i] == '(') {
-            stack.push('(');
-        }
-        else if (str[i] == ')') {
-            if (stack.isEmpty()) {
-                res = false;
-                break;
-            }
-            stack.pop();
-        }
-    }
-
-    if (!stack.isEmpty()) res = false;
-
-    cout << res << endl;
-
-
-    cout << "Calculator" << endl;
     Calculator calc;
-    calc.set_infix("(5 + 2.2 * 4.21) + 21 / 3.3");
-    calc.infix_to_cont();
-    cout << calc.print_tokens();
+    cout << calc.math("2+3") << endl;
+    cout << calc.math("2+3*3") << endl;
+    cout << calc.math("5^3+2") << endl;
+    try {
+        cout << calc.math("(1.5 + 2.25) * 3.0 ^ 2.0 - 10.5 / 2.5 + (4.75 - 1.25) ^ 2.0 / 2.0") << endl;
+    } catch (const char* msg) {
+        cout << "Error: " << msg << '\n';
+    }
+    
 
     return 0;
 }
